@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="fav.png">
+
+    <title>회원증 만들기</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background: rgb(240,240,240);
+            color: white;
+            font-family: 'Dongle';
+            text-align: center;
+        }
+
+        @font-face {
+    	font-family: 'ChosunGu';
+   	 src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+    	font-weight: normal;
+    	font-style: normal;
+		}
+
+        h1 { font-size: 5rem; color: brown; margin: 0; padding-top: 30px;}
+        h2 { font-weight: 400; font-size: 2rem; text-align: left; padding-left: 155px; color: brown; display:flex; align-items:center; }
+
+        input, select {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 200px;
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        .flex, .flexinfo {
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            margin-bottom: 20px;
+        }
+
+        .flexbye{justify-content: space-around;}
+
+        img { width:460px; }
+
+        .icon { width: 30px; padding-bottom: 12px; padding-right: 12px;}
+        .dec { width: 17px; padding: 32px 17px; }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin: 0 30px; 
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer; 
+            margin-right: 30px;
+            display: inline-block;
+            appearance: none;
+            border: 1.6px solid brown; 
+            border-radius: 5px; 
+            position: relative; 
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: '✓'; 
+            color: brown; 
+            font-weight: bold;
+            font-size: 38px; 
+            position: absolute; 
+            left: 1px;
+            top: -16px;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: transparent; 
+        }
+
+        #name{
+            color: black;
+            background-color: white;
+            border: 1.6px solid brown;
+            border-radius: 8px;
+            font-family: 'Dongle';
+            font-weight: 400;
+            font-size: 1.4rem;
+            padding-left: 6px;
+        }
+
+        #name:focus {
+            border-color: brown; 
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5); 
+        }
+
+        #birthdate {
+            font-size: 1.4rem;
+            padding-left: 6px;
+            color: black;
+            background-color: white;
+            border: 2px solid brown;
+            border-radius: 8px;
+            font-family: 'Dongle';
+            font-weight: 400;
+          
+        }
+
+        #birthdate:focus {
+            border-color: brown;
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5); 
+        }
+
+        #skill {
+            font-size: 1.4rem;
+            padding-left: 6px;
+            color: black;
+            background-color: white;
+            border: 2px solid brown;
+            border-radius: 8px;
+            font-family: 'Dongle';
+            font-weight: 400;
+            font-size: 1.2rem; 
+        }
+
+        #skill option {
+            background-color: white;
+            color: black;
+            font-family: 'Dongle';
+            font-weight: 400;
+            font-size: 1.4rem;  
+            padding: 10px;
+        }
+
+        #skill option:hover,
+        #skill option:checked {
+            background-color: brown;
+            color: white;
+            font-family: 'Dongle';
+            font-weight: 400;
+            font-size: 1.4rem;  
+        }
+
+        #skill:focus {
+            border-color: brown; 
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5); 
+        }
+
+        button {
+            font-family: 'Dongle';
+            font-size: 2.2rem;
+            padding: 6px 30px;
+            border-radius: 20px;
+            border: 3px brown solid;
+            color: white;
+            background-color: brown;
+
+        }
+
+        button:hover{
+        	color: black;
+        	cursor: url('gogo.png'), auto;
+
+        }
+
+#cardPreview {
+    display: none; 
+    position: relative; 
+    margin-top: 20px; 
+}
+
+        
+#videoContainer {
+    position: absolute;
+    top: 341px; 
+    left: 19%; 
+    width: 340px; 
+    height: 410px;
+    display: none; 
+    overflow: hidden;
+    border-radius: 30px;
+    z-index: -10;
+}
+        video {
+            width: 100%;
+            height: 100%;
+            transform: scaleX(-1);
+	       object-fit: cover;}
+
+.card-info {
+    position: absolute; 
+    color: black;
+    font-size: 1.7rem;
+    font-family: 'ChosunGu';
+}
+
+#cardName {
+    top: 398px; 
+    left: 62.8%
+}
+
+#cardBirthdate {
+    top: 476px; 
+    left: 62.8%
+}
+
+#cardSkill {
+    top: 554px; 
+    left: 62.8%}
+
+#cardJoinDate {
+    top: 632px; 
+    left: 62.8%;}
+
+
+    
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <h1><img class="dec" src="dec01.png">회원증 만들기<img class="dec" src="dec02.png"></h1>
+    
+    <div id="formContainer">
+        <div>
+            <h2 class="textleft"><img class="icon" src="tt.png">카드 선택</h2>
+            <div class="flex">
+                <label>
+                    <input type="checkbox" name="design" value="idcard01.png" 
+                    onclick="toggleCheckbox(this)"> 
+                    <img src="idcard01.png" alt="ID Card 1" width="100">
+                </label>
+                <label>
+                    <input type="checkbox" name="design" value="idcard02.png" onclick="toggleCheckbox(this)">
+                    <img src="idcard02.png" alt="ID Card 2" width="100">
+                </label>
+            </div>
+        </div>
+
+        <div style="padding-top: 20px;">
+            <h2 class="textleft"><img class="icon" src="tt.png">정보 입력</h2>
+            <div class="flexinfo">
+                <input type="text" id="name" placeholder="이름" required>
+                <input type="date" id="birthdate" placeholder="생년월일" required>
+                <select id="skill">
+                    <option value="" disabled selected>충치 예방 능력</option>
+                    <option value="양치질 3단">양치질 3단</option>
+                    <option value="단것 피하기 마스터">단것 피하기 마스터</option>
+                    <option value="치실 기네스북 등단">치실 기네스북 등단</option>
+                    <option value="물 많이 마시기 1급">물 많이 마시기 1급</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="padding-top: 60px;"><button id="createButton">회원증 제작하기</button></div>
+    </div>
+
+
+    <div id="cardPreview">
+        <img id="cardImage" src="" alt="회원증" style="padding-top: 120px; width: 1200px;"/>
+        <div id="videoContainer">
+        	<video id="webcam" autoplay playsinline></video>
+   		</div>
+        <div class="card-info" id="cardName"></div>
+        <div class="card-info" id="cardBirthdate"></div>
+        <div class="card-info" id="cardSkill"></div>
+        <div class="card-info" id="cardJoinDate"></div>
+        <div style="padding-top: 80px; padding-left: 20px;" class="flexbye">
+        <button id="downloadButton">회원증 발급하기</button>
+        <button id="backButton">다시 선택하기</button> 
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('createButton').addEventListener('click', () => {
+                const name = document.getElementById('name').value;
+                const birthdate = document.getElementById('birthdate').value;
+                const skill = document.getElementById('skill').value;
+                const design = document.querySelector('input[name="design"]:checked')?.value;
+
+                if (name && birthdate && skill && design) {
+                    createCard(name, birthdate, skill, design);
+                } else {
+                    alert("모든 정보를 입력해 주세요.");
+
+                       
+                }
+            });
+
+            document.getElementById('backButton').addEventListener('click', goBack); 
+            document.getElementById('downloadButton').addEventListener('click', downloadCard);
+        });
+
+        function toggleCheckbox(checkbox) {
+            const checkboxes = document.querySelectorAll('input[name="design"]');
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) {
+                    item.checked = false; 
+                }
+            });
+        }
+
+        async function startWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.getElementById('webcam');
+                video.srcObject = stream;
+                video.style.display = 'block';
+            } catch (err) {
+                console.error('웹캠 권한을 요청하는 중 오류 발생:', err);
+            }
+        }    
+
+        function createCard(name, birthdate, skill, design) {
+            document.getElementById('formContainer').style.display = 'none';
+            document.querySelector('h1').style.display = 'none';
+            const cardPreview = document.getElementById('cardPreview');
+            cardPreview.style.display = 'block'; 
+             document.getElementById('videoContainer').style.display = 'block'; 
+
+            const cardImage = document.getElementById('cardImage');
+            cardImage.src = design;
+
+            const formattedBirthdate = new Date(birthdate).toISOString().split('T')[0];
+            const today = new Date();
+    	const formattedJoinDate = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+            document.getElementById('cardName').textContent = `${name}`;
+            document.getElementById('cardBirthdate').textContent = ` ${formattedBirthdate}`;
+            document.getElementById('cardSkill').textContent = `${skill}`;
+            document.getElementById('cardJoinDate').textContent = ` ${formattedJoinDate}`;
+
+
+    if (design === 'idcard02.png') {
+        document.getElementById('videoContainer').style.display = 'block';
+        document.getElementById('videoContainer').style.height = '440px'; 
+        document.getElementById('videoContainer').style.top = '250px';  
+        document.getElementById('videoContainer').style.left = '19.5%';  
+        document.getElementById('cardName').style.top = '350px';  
+        document.getElementById('cardBirthdate').style.top = '428px';
+        document.getElementById('cardSkill').style.top = '503px';
+        document.getElementById('cardJoinDate').style.top = '579px';
+    } else {
+        document.getElementById('videoContainer').style.display = 'block';
+        document.getElementById('videoContainer').style.top = '341px';  
+        document.getElementById('cardName').style.top = '398px'; 
+        document.getElementById('cardBirthdate').style.top = '476px';
+        document.getElementById('cardSkill').style.top = '554px';
+        document.getElementById('cardJoinDate').style.top = '632px';
+    }
+
+    startWebcam();
+}
+
+
+          
+        function goBack() {
+            document.getElementById('cardPreview').style.display = 'none';
+            document.getElementById('formContainer').style.display = 'block';
+            document.querySelector('h1').style.display = 'block';
+            document.getElementById('videoContainer').style.display = 'none'; 
+        }
+
+         
+      function downloadCard() {
+        const cardPreview = document.getElementById('cardPreview');
+    
+        html2canvas(cardPreview).then(canvas => {
+            const dataURL = canvas.toDataURL('image.png');
+            
+            const link = document.createElement('a');
+            link.href = dataURL;
+            link.download = '회원증.png';  
+            link.click();
+        });
+    }
+
+    document.getElementById('downloadButton').addEventListener('click', downloadCard);
+</script>
+</body>
+</html>
